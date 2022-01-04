@@ -10,12 +10,14 @@ import { Alumno } from '../models/Alumno';
 export class AlumnosService {
 
   url: string = 'https://api-control-registros.herokuapp.com/api/alumnos';
+  length: number;
 
   constructor(private http: HttpClient) { }
 
   header = new HttpHeaders()
   .set('Content-Type', 'application/json')
-  .set('Accept', 'application/json');
+  .set('Accept', 'application/json')
+  .set('Access-Control-Alow-Origin', '*');
 
   getAlumnos() {
     return this.http.get(this.url, { headers: this.header }).pipe(
@@ -38,6 +40,10 @@ export class AlumnosService {
   deleteAlumno(id: number) {
     //Así es como se borra un cliente con los headers de navegación entre páginas
     return this.http.delete<any[]>(`${this.url}/${id}`, {headers:this.header});
+  }
+
+  perfilAlumno (id: number) {
+    return this.http.get<any[]>(`${this.url}/${id}`, {headers:this.header});
   }
 
 }

@@ -1,9 +1,71 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>alumno</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-encabezado titulo="Editar Alumno" mode="ios"></app-encabezado>
 
-<ion-content>
+<ion-content mode="ios" class="ion-padding">
+  <ion-list-header>
+    <ion-label>Gestión de alumno</ion-label>
+  </ion-list-header>
+  <form #formulario="ngForm" (ngSubmit)="guardar()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text"
+      placeholder="Nombre"
+      name="nombre"
+      minlength="3"
+      maxlength="75"
+      [(ngModel)]="alumno.nombre"
+      required></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="floating">Apellidos</ion-label>
+      <ion-input type="text"
+      placeholder="Apellidos"
+      name="apellidos"
+      minlength="3"
+      maxlength="75"
+      [(ngModel)]="alumno.apellidos"
+      required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Edad</ion-label>
+      <ion-input type="number"
+      placeholder="Edad"
+      name="edad"
+      minlength="1"
+      maxlength="2"
+      [(ngModel)]="alumno.edad"
+      required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contacto 1</ion-label>
+      <ion-input type="email"
+      placeholder="telefono_1"
+      name="telefono_1"
+  
+      minlength="10"
+      maxlength="10"
+      [(ngModel)]="alumno.telefono_1"
+      required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contacot 2</ion-label>
+      <ion-input type="text"
+      placeholder="text"
+      name="telefono_2"
+  
+      minlength="10"
+      maxlength="10"
+      [(ngModel)]="alumno.telefono_2"
+      required></ion-input>
+    </ion-item>
+
+    <br>
+    <ion-button type="submit" expand="block" shape="round" [disabled]="formulario.invalid">
+      Aceptar
+    </ion-button>
+
+  </form>
 </ion-content>

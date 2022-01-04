@@ -40,16 +40,16 @@ export class AlumnosPage  {
               }
             
               verAlumno(alumno: Alumno) {
-                this.navController.navigateForward(['/alumnos', alumno.id]);
+                this.navController.navigateForward(['alumnos/alumno', alumno.id]);
               }
             
               agregarAlumnos() {
-                this.navController.navigateForward(['/alumnos', -1]);
+                this.navController.navigateForward(['alumnos/alumno', -1]);
               }
             
               editarAlumno(alumno: Alumno) {
                 //Navega a la siguiente página mediante un arreglo
-                this.navController.navigateForward(['/alumnos', alumno.id]);
+                this.navController.navigateForward(['alumnos/alumno', alumno.id]);
               }
             
               async eliminarAlumno(alumno, i) {
