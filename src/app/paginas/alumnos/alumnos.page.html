@@ -1,5 +1,65 @@
-<app-encabezado titulo="Alumnos">
+  <ion-header>
+    <ion-toolbar mode="ios">
+      <ion-buttons slot="start">
+        <ion-back-button text="Regresar" mode="ios" defaultHref="/"></ion-back-button>
+        </ion-buttons>
+      <ion-title color="primary">
+          {{titulo}}
+        </ion-title>
+    </ion-toolbar>
+    <ion-searchbar placeholder="Buscar" inputmode="text" (ionChange)="onSearchChange($event)"
+    [debounce]="250" showCancelButton="always"></ion-searchbar>
+</ion-header>
 
-<ion-content>
+<ion-content mode="ios">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="agregarAlumnos()">
+            <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let alumno of alumnos | filtro: textoBuscar:'nombre'; let i = index">
+            <ion-item-options side="start">
+                <ion-item-option color="success" (click)="editarAlumno(alumno)">
+                    <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+            
+            <ion-item>
+                <ion-label>
+                    <h2>{{alumno.nombre}}</h2>
+                    <h3>{{alumno.apellidos}}</h3>
+                    <h3>{{alumno.edad}}</h3>
+                    <p>{{alumno.telefono_1}}</p>
+                    <p>{{alumno.telefono_2}}</p>
+                </ion-label>
+                <ion-button slot="end" color="primary" (click)="verAlumno(alumno)">
+                    <ion-icon slot="icon-only" name="eye"></ion-icon>
+                </ion-button>
+            </ion-item>
+
+            <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="eliminarAlumno(alumno,i)">
+                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <ion-list *ngIf="alumnos===null">
+        <ion-item *ngFor="let i of [1,1,1,1,1,1,1,1,1]">
+            <ion-label>
+                <h3>
+                    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+                </h3>
+                <p>
+                    <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                </p>
+            </ion-label>
+
+            <ion-skeleton-text slot="end" style="width: 40px"></ion-skeleton-text>
+        </ion-item>
+    </ion-list>
 
 </ion-content>

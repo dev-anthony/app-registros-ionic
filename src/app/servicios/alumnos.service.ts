@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { Alumno } from '../models/Alumno';
 
 @Injectable({
@@ -17,10 +18,26 @@ export class AlumnosService {
   .set('Accept', 'application/json');
 
   getAlumnos() {
-    return this.http.get(this.url, { headers: this.header });
+    return this.http.get(this.url, { headers: this.header }).pipe(
+      delay(700)
+    );
   }
   
-  showAlumno(id: number): Observable<Alumno[]>{
-    return this.http.get<Alumno[]>(this.url + '/' + id, { headers: this.header });
+  showAlumno(id: number) {
+    return this.http.get<any[]>(this.url + '/' + id, { headers: this.header });
   }
+
+  postAlumno(alumno: Alumno): Observable<Alumno> {
+    return this.http.post<Alumno>(`${this.url}/`, alumno, {headers:this.header});
+  }
+
+  updateAlumno(alumno: Alumno): Observable<Alumno> {
+    return this.http.put<Alumno>(`${this.url}/${alumno.id}`, alumno, {headers:this.header});
+  }
+
+  deleteAlumno(id: number) {
+    //Así es como se borra un cliente con los headers de navegación entre páginas
+    return this.http.delete<any[]>(`${this.url}/${id}`, {headers:this.header});
+  }
+
 }

@@ -8,6 +8,7 @@ import { AlumnosPageRoutingModule } from './alumnos-routing.module';
 
 import { AlumnosPage } from './alumnos.page';
 import { ComponenteModule } from 'src/app/componentes/componente/componente.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponenteModule } from 'src/app/componentes/componente/componente.modu
     FormsModule,
     IonicModule,
     AlumnosPageRoutingModule,
-    ComponenteModule
+    ComponenteModule,
+    PipesModule
   ],
   declarations: [AlumnosPage]
 })
