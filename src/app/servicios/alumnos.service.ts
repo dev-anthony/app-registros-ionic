@@ -30,7 +30,7 @@ export class AlumnosService {
   }
 
   postAlumno(alumno: Alumno): Observable<Alumno> {
-    return this.http.post<Alumno>(`${this.url}/`, alumno, {headers:this.header});
+    return this.http.post<Alumno>(`${this.url}`, alumno, {headers:this.header});
   }
 
   updateAlumno(alumno: Alumno): Observable<Alumno> {
