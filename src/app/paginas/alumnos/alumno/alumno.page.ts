@@ -29,7 +29,7 @@ export class AlumnoPage implements OnInit {
                     this.titulo = 'Editar alumno';
                     this.alumnoSerivce.showAlumno(this.id).subscribe(response => {
                       this.alumno = response['data'];
-                      console.log('Cliente', this.alumno);
+                      // console.log('Alumno', this.alumno);
                     }
                     );
                   }

@@ -30,7 +30,7 @@ export class AlumnosPage  {
                   this.alumnos = Object.values(response.data);//esto es para convertir el objeto en un array
                   // console.log(response);
                   //acceder a la data de alumnos
-                  console.log(response.data);
+                  // console.log(response.data);
                 }
                 );
               }
